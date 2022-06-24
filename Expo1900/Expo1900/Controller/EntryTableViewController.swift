@@ -104,7 +104,10 @@ extension EntryTableViewController {
         case .success(let data):
             entryEntity = data
         case .failure(let error):
-            self.showConfirmAlert(title: "뒤로가기", message: error.message, alertStyle: .revert)
+            let revertAction = UIAlertAction(title: "뒤로가기", style: .default) { _ in 
+                self.navigationController?.popViewController(animated: true)
+            }
+            self.showConfirmAlert(title: "알림", message: error.message, alertAction: revertAction)
         }
     }
 }
