@@ -27,10 +27,9 @@
 ### Week 1
 > 2022.06.13 ~ 2022.06.17
 
-- 2022-06-13(월) - STEP1 PR
+- 2022-06-13(월) - STEP_01 PR
   - Json 별 모델 타입 구현, UIImage 변환 구현
   - STEP1 Pull Request
-  - 
 
 - 2022-06-14(화) - STEP1 Merged
   - Json 파일 프로젝트에 추가, Json 파싱 기능 구현
@@ -47,11 +46,17 @@
 ### Week 2
 > 2022.06.20 ~ 2022.06.24
 
-- 2022-06-20(월)
+- 2022-06-20(월) - STEP_02 PR & Merged
+    - 접근제어자 수정
+    - TableViewCell identifier 설정
 - 2022-06-21(화)
+    - Orientaion 설정
 - 2022-06-22(수)
-- 2022-06-23(목)
-- 2022-06-24(금)
+    - Notch 유무에 따른 Autolayout 기능 구현
+- 2022-06-23(목) - STEP_03 PR
+    - Dynamic Type 설정 
+- 2022-06-24(금) - STEP_03 Merged
+    - Alert 기능 수정, README 작성
 
 ## 실행 화면(기능 설명)
 
@@ -88,12 +93,20 @@ Expo1900
 │   ├── Assets
 │   ├── LaunchScreen
 │   └── Info.plist
+├── Extensions 
+│   ├── Int+Extensions
+│   ├── UILabel+Extensions
+│   └── UIViewController+Extensions
+│
 ├── Model
 │   ├── ExpositionPostEntity
 │   ├── EntryEntity
 │   ├── ExpositionPost
-│   ├── JsonParser
-│   └── JsonError
+│   ├── JSON ├── JsonError
+│   │        ├── JSONFile
+│   │        └── JsonParser
+│   │  
+│   └── ReuseIdentifying
 ├── View
 │   ├── ExpositionPostView
 │   ├── ExpositionTableViewCell
@@ -136,10 +149,34 @@ Expo1900
     - Debug View hierarchy를 통해 각 UI Element의 크기 파악 
 
 9. isActive = true로 너무 많이 선언 되어 있던 부분
-    - NSLayoutConstraint.activate 안에 매개변수 [NSLayoutConstraint]         로 해결
+    - NSLayoutConstraint.activate 안에 매개변수 [NSLayoutConstraint] 로 해결
 
 10. 코드로 UI 구현을 위해 설정 해야하는 부분들 
     - Main Stroyboard 제거, Info.plist 설정 제거, SceneDelegate 내에 rootViewController 설정 
+
+11. 가로화면을 중에 첫번째 화면으로 돌아갔을때 세로고정 화면이 되지 않는 문제점
+    - UIInterfaceOrientation.portrait.rawValue 를 UIDevice.current.setValue 의 값으로 넣어줘서 세로고정화면 셋팅
+    
+12. Notch가 있는 디바이스와 없는 디바이스 에서 Autolayout이 다르게 적용되는것
+    - 첫 화면에서 다음 페이지로 넘어가는 버튼의 bottom부분이 notch가 존재하는 경우 safeArea가 존재해 34만큼의 간격 존재하지만 notch가 없는경우 bottom이 0이라 버튼이 있는 View는 바닥과 딱 달라 붙음. 크기 문제가 되지 않으나 통일성을 주고싶어 설정함 
+    - 두 번째 페이지 테이블 뷰의 셀의 라인 부분이 짤려 나옴. 이 부분도 위와 동일한 설정으로 해결하였습니다.
+
+13. JSON Parsing 처리에서 발생할 수 있는 Error들을 UI로 처리하기 위해 Alert를 만들었습니다. 
+    - 해당 Alert는 title, message, alertAction을 파라미터로 받는 public한 메서드를 호출하여서 생성됩니다. 해당 메서드는 UIViewController Extensions에서 구현하였습니다. 
+    
+14. AppDelegate에서 Orientation의 설정을 위해 뷰 컨트롤러에서 상태 값을 받기 위한 프로퍼티를 생성하였습니다. 
+    - 또한 해당 상태 값을 처리하기 위해 UIViewController Extensions을 따로 만들어 delegate.isActivatedOnlyPortrait = isActivated로 상태 값을 받을 수 있는 함수를 생성하였습니다. 
+
+15. Dynamic Type, LineBreakMode, LineBreakStrategy
+    - UILabel 속성 설정에서 adjustsFontForContentSizeCategory = true 추가
+    - .lineBreakStrategy = .hangulWordPriority 한글 우선 순위 추가
+    - .lineBreakMode = .byCharWrapping char단위로 LineBreak 추가
+
+16. ReuseIdentifying 프로토콜을 만들어서 TableViewCell이 채택하였습니다.
+    - 해당 프로토콜을 채택하면 TableViewCell의 타입 이름을 identifier로 받아서 간편하게 사용할 수 있습니다.
+    
+17. font title
+    - setTitle 함수로 Label 글자중 강조되어야할 부분이 있으면 처리해주는 기능 구현
 
 ## 참고 링크
 
@@ -169,4 +206,14 @@ Expo1900
 
 [ScrollView](https://jubakong.medium.com/swift-ios-scrollview%EB%A5%BC-%EC%8D%A8%EB%B3%B4%EC%9E%90-2-82bc2569c972)
 
+[Linebreak](https://archijude.tistory.com/340)
 
+[lineBrakeStrategy](https://developer.apple.com/documentation/uikit/nsparagraphstyle/3667463-linebreakstrategy)
+
+[lineBreakMode](https://developer.apple.com/documentation/uikit/uilabel/1620525-linebreakmode)
+
+[max() - Method](https://developer.apple.com/documentation/swift/max(_:_:))
+
+[Orientation](https://karzin.tistory.com/192)
+
+[DynamicType](https://velog.io/@minni/Dynamic-Type-egjn26z5)
