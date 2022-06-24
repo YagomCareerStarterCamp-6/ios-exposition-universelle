@@ -78,11 +78,11 @@
 <br>
 
 ## 🗂 폴더 구조
-> Application : `AppDelegate`, `SceneDelegate`
-> Resources : Assets, LaunchScreen, Info.plist
-> Model : JSON 호출, JSON 데이터에 필요한 타입, Error 타입
-> View : `ExpositionPostView`,`ExpositionTableViewCell`,`ExpositionDetailView`
-> Controller : `ExpositionPostViewController`, `ExpositionTableViewController`, `ExpositionDetailViewController`
+> Application : `AppDelegate`, `SceneDelegate` <br>
+> Resources : Assets, LaunchScreen, Info.plist <br>
+> Model : JSON 호출, JSON 데이터에 필요한 타입, Error 타입 <br>
+> View : `ExpositionPostView`,`ExpositionTableViewCell`,`ExpositionDetailView` <br>
+> Controller : `ExpositionPostViewController`, `ExpositionTableViewController`, `ExpositionDetailViewController` <br>
 
 ```swift 
 Expo1900
