@@ -1,6 +1,36 @@
 ## 만국박람회 프로젝트 저장소
+## 🚌 만국박람회
+>파리 만국 박람회 1900 의 한국의 출품작을 볼수있는 '만국박람회'앱 프로젝트입니다.
+ 
+<div align="center">
+    <img src="https://img.shields.io/badge/swift-5.7-F05138.svg?style=flat&logo=Swift">
+    <img src="https://img.shields.io/badge/14.0-000000.svg?style=flat&logo=iOS">
+    <img src="https://img.shields.io/badge/Xcode-13.4.1-white.svg?style=flat&logo=XCode">
+    <img src="https://img.shields.io/badge/UIKit-white.svg?style=flat&logo=UIKit">
+</div>
 
-## [Step 01] 
+
+<br>
+
+## 🫂 팀 소개
+> derrick과 백곰이 함께 만국박람회라는 토이 프로젝트를 진행하였습니다.
+
+|[BaekGom - 며느리](https://github.com/Baek-Gom-95)|[Derrickkim - 시어머니](https://github.com/derrickkim0109)|
+|:--------:|:--------:|
+|<img src="https://i.imgur.com/Ea3cELm.jpg" width=200>|<img src="https://avatars.githubusercontent.com/u/59466342?v=4" width=200>|
+|Autolayout<br>Custom View<br>Unit Test<br>Table View|Autolayout<br>인스턴스 캡슐화, 은닉화처리<br>Error 처리<br>JSON 데이터를 위한 타입 구현<br>테이블뷰 구현<br>Custom View 생성<br>디렉토리별 분리<br>프로젝트 기능 MVC로 분리<br>PR 틀작성<br>Unit Test<br>|
+
+<br>
+
+## 실행 화면(기능 설명)
+
+### 메인화면
+> ExpositionPost  Json 파일 의 데이터들을 위해 ExpositionPostEntity 타입을 생성하여 데이터로 받아주었고 두개의 StackView 통해서 보여주었습니다
+
+
+### 한국 출품작 리스트
+> EntryEntity Json 파일의 데이터들을 위해 EntryEntity 타입을 생성하여 배열로 데이터를 받아주었고 해당 부분을 TableView를 통해서 리스트를 보여주었습니다.  
+
 
 # 배경 
 > JSON 포멧의 데이터와 매칭할 모델 타입을 구현
